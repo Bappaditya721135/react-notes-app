@@ -1,22 +1,27 @@
 import React from "react";
 import AddNote from "./AddNote";
+import NoteCard from "./NoteCard";
 
 export default function Notes() {
 
     const [addNoteBox, setAddNoteBox] = React.useState(false);
     const [notes, setNotes] = React.useState([]);
+    // This state is only for rerendering 
+    // const [render, setRender] = React.useState(false);
 
+    // function rerender() {
+    //     setRender(prevRender => !prevRender);
+    // }
+    console.log(notes.length + 1)
     // this function will recieve the note entered by user in addNote component 
     function reciveData(noteObj) {
-        console.log(notes)
-        setNotes(prevNotes => {
-            prevNotes.push(noteObj);
-
-            return prevNotes;
-        }) 
-        console.log(notes);
+        const newObj = {
+            ...noteObj,
+            id: notes.length +1,
+        }
+        setNotes(prevNotes => [...prevNotes,newObj]);
     }
-
+    console.log(notes);
     function handleClick() {
         setAddNoteBox(prevAddNoteBox => !prevAddNoteBox);
     }
@@ -24,12 +29,8 @@ export default function Notes() {
     return (
         <div className="notes-container">
             <section className="notes">
-                {notes.map(obj => {
-                    return (<div>
-                        <p>{obj.title}</p>
-                        <p>{obj.note}</p>
-                        </div>);
-                })}
+                {notes.map(item => <NoteCard key={item.id} title={item.title} note={item.note}/>)}
+                
             </section>
 
             {addNoteBox && <section className="add-note-box">
