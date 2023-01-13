@@ -91,9 +91,44 @@ body {
 
 /* NoteCard components  */
 .note-card {
+  width: 200px;
+  height: 200px;
   display: inline-block;
-  border: 2px solid red;
+  background-color: #c7c7c7;
+  color: blue;
+  /* border: 2px solid red;/ */
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 20px;
   margin: 20px;
+  transition: .5s;
+  box-shadow: 0 0 20px 1 #413a3a;
+}
+
+.note-card:hover {
+  background-color: blue;
+  color: white;
+  box-shadow: 0 0 20px 1px black;
+}
+
+.note-card:hover>p>span {
+  color: white;
+}
+
+.note-card>p {
+  display: flex;
+  flex-direction: column;
+}
+
+.date {
+  font-size: .8rem;
+  margin-bottom: 20px;
+}
+
+.note-span {
+  color: black;
+  overflow: hidden;
+}
+
+.note-title {
+  margin-bottom: 20px;
 }
