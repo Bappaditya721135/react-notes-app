@@ -1,6 +1,9 @@
 import React from "react";
 export default function AddNote(props) {
 
+
+    // id of each object 
+    // let i = 1;
     // store note in state 
     const [note, setNote] = React.useState({});
 
@@ -18,19 +21,15 @@ export default function AddNote(props) {
     // when data will be sent 
     function sendData() {
         props.reciveData(note);
+        // i = i + 1;
+        // console.log(i);
+        // props.rerender();
     }
 
     
-    // this code is to the date in notes 
-    const date = new Date();
-    const day = date.getDate();
-    const month = date.getMonth()+1;
-    const showMonth = month>9 ? month : `0${month}`;
-    const year = date.getFullYear();
 
     return (
         <div className="add-note-container">
-            <div className="date">{`${day}/${showMonth}/${year}`}</div>
 
             <label htmlFor="title">Title</label>
             <input type="text" onChange={handleChange} name="title" id="title" placeholder="title.." />
