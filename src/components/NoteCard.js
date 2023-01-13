@@ -7,8 +7,8 @@ export default function NoteCard(props) {
     return (
         <div className="note-card">
             <div className="date">{`${day}/${month}/${year}`}</div>
-            <p>Title- {props.title}</p>
-            <p>Note- {props.note}</p>
+            <p className="note-title ">Title- <span className="note-span">{props.title}</span></p>
+            <p className="note-disc ">Note- <span className="note-span">{props.note}</span></p>
         </div>
     );
 }
