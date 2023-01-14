@@ -110,13 +110,14 @@ body {
   box-shadow: 0 0 20px 1px black;
 }
 
-.note-card:hover>p>span {
+/* .note-card:hover>p>span {
   color: white;
-}
+} */
 
 .note-card>p {
   display: flex;
   flex-direction: column;
+  font-size: 0.8rem;
 }
 
 .date {
@@ -127,8 +128,89 @@ body {
 .note-span {
   color: black;
   overflow: hidden;
+  padding: 3px 5px;
+  font-size: 1rem;
+  background-color: #d3d3d3;
 }
 
 .note-title {
   margin-bottom: 20px;
+}
+
+.background-blur {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  color: black;
+  height: 100vh;
+  backdrop-filter: blur(3px);
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+
+/* bigNote component  */
+.big-note-card {
+  z-index: 2;
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  height: 400px;
+  background-color: white;
+  color: black;
+  margin-inline: auto;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.cross-btn {
+  position: absolute;
+  top: 7px;
+  left: 93%;
+  font-size: 1rem;
+  padding: 0 10px;
+  font-size: 1.5rem;
+  box-shadow: 0 0 1px 1px #474747;
+  font-weight: 700;
+  cursor: default;
+}
+
+.cross-btn:hover {
+  background-color: red;
+  color: white;
+  font-weight: 400;
+}
+
+.note-date {
+  text-align: center;
+  padding-top: 20px;
+  color: blue;
+}
+
+.note-date>span {
+  color: black;
+  text-decoration: underline;
+}
+
+
+.title-section {
+  margin-bottom: 35px;
+}
+
+.big-note-title {
+  margin-left: 10px;
+  background-color: #e2e1e0;
+  padding: 3px 10px;
+}
+
+.big-note-disc {
+  margin-left: 10px;
+  width: calc(100% - 10px);
+  height: 190px;
+  background-color: #e2e1e0;
+  padding: 5px;
+}
+.big-note-heading {
+  color: blue;
 }
