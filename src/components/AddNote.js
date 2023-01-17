@@ -32,10 +32,10 @@ export default function AddNote(props) {
         <div className="add-note-container">
 
             <label htmlFor="title">Title</label>
-            <input type="text" onChange={handleChange} name="title" id="title" placeholder="title.." />
+            <input type="text" onChange={handleChange} name="title" id="title" maxLength="90"  placeholder="title.." required />
 
             <label htmlFor="note">Note</label>
-            <textarea onChange={handleChange} name="note" id="note" placeholder="write your note here"></textarea>
+            <textarea onChange={handleChange} name="note" id="note" placeholder="write your note here" required ></textarea>
 
             <button onClick={sendData} className="add">add</button>
         </div>

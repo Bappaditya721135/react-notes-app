@@ -22,13 +22,14 @@ export default function NoteCard(props) {
     const year = date.getFullYear();
     return (
     <>
-        <abbr title="click to see the full note">
+        {/* <abbr className="abbr" title="click to see the full note"> */}
             <div onClick={handleCardClick} className="note-card">
+                <p className="note-title ">{props.title}</p>
+                <p className="note-disc ">{props.note}</p>
+                <hr />
                 <div className="date">{`${day}/${month}/${year}`}</div>
-                <p className="note-title ">Title- <span className="note-span">{props.title}</span></p>
-                <p className="note-disc ">Note- <span className="note-span">{props.note}</span></p>
             </div>
-        </abbr>
+        {/* </abbr> */}
         {bigNote && <BigNote 
                     title={props.title} 
                     note={props.note} 
