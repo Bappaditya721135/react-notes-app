@@ -37,6 +37,7 @@ export default function Notes() {
             </section>
 
             {addNoteBox && <section className="add-note-box">
+                <div onClick={handleClick} className="background-blur"></div>
                 <AddNote reciveData={reciveData} />
             </section>}
             <section className="add-btn-section">
