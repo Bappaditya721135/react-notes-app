@@ -19,7 +19,7 @@ export default function BigNote(props) {
     }
 
     const style = {
-        backgroundColor: dotBtn ? "#e4e2e2" : "transparent",
+        backgroundColor: dotBtn ? "#e4e2e2" : "none",
     }
 
     return(
