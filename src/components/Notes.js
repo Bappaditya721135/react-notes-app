@@ -41,7 +41,7 @@ export default function Notes() {
                 <AddNote reciveData={reciveData} />
             </section>}
             <section className="add-btn-section">
-                <button onClick={handleClick} className="add-btn">Add Note</button>
+                <button onClick={handleClick} className="add-btn">Add Note<i class="fa-solid fa-pen-to-square"></i></button>
             </section>
         </div>
     );
