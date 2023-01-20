@@ -25,7 +25,7 @@ export default function BigNote(props) {
     return(
         <div className="big-note-card">
             <div className="date-dot-btn">
-            <div className="note-date">Date-{`${props.day}/${props.month}/${props.year}`}</div>
+            <div className="note-date">Date-{props.date}</div>
             <i onClick={handleClick} className="fa-solid fa-ellipsis-vertical dot-btn" style={style}>
             {dotBtn && 
             <ul className="dot-btn-option">

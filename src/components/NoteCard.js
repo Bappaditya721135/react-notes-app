@@ -11,15 +11,9 @@ export default function NoteCard(props) {
         setBigNote(prevBigNote => {
             return !prevBigNote;
         })
-        console.log("clicked");
 
     }
 
-    const date = new Date();
-    const day = date.getDate();
-    const m = date.getMonth()+1;
-    const month = m>9 ? m : `0${m}`;
-    const year = date.getFullYear();
     return (
     <>
         {/* <abbr className="abbr" title="click to see the full note"> */}
@@ -27,16 +21,14 @@ export default function NoteCard(props) {
                 <p className="note-title ">{props.title}</p>
                 <p className="note-disc ">{props.note}</p>
                 <hr />
-                <div className="date">{`${day}/${month}/${year}`}</div>
+                <div className="date">{props.date}</div>
             </div>
         {/* </abbr> */}
         {bigNote && <BigNote 
                     title={props.title} 
                     note={props.note} 
                     handleCardClick={handleCardClick}
-                    day={day}
-                    month={month}
-                    year={year}
+                    date={props.date}
                     />}
                     
         {bigNote && <div onClick={handleCardClick} className="background-blur"></div>}
