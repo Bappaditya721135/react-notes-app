@@ -2,8 +2,17 @@ import React from "react";
 export default function AddNote(props) {
 
 
-    // id of each object 
-    // let i = 1;
+    // date for each note object 
+    const d = new Date();
+    const day = d.getDate();
+    const m = d.getMonth()+1;
+    const month = m>9 ? m : `0${m}`;
+    const year = d.getFullYear();
+
+    const date = `${day}/${month}/${year}`;
+
+
+
     // store note in state 
     const [note, setNote] = React.useState({});
 
@@ -12,6 +21,7 @@ export default function AddNote(props) {
         setNote(prevNote => {
             return {
                 ...prevNote,
+                date: date,
                 [event.target.name]: event.target.value,
             }
         })

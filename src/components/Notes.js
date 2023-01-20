@@ -32,7 +32,7 @@ export default function Notes() {
     return (
         <div className="notes-container">
             <section className="notes">
-                {notes.map(item => <NoteCard key={item.id} title={item.title} note={item.note} />)}
+                {notes.map(item => <NoteCard key={item.id} title={item.title} note={item.note} date={item.date} />)}
                 
             </section>
 
@@ -41,7 +41,7 @@ export default function Notes() {
                 <AddNote reciveData={reciveData} />
             </section>}
             <section className="add-btn-section">
-                <button onClick={handleClick} className="add-btn">Add Note<i class="fa-solid fa-pen-to-square"></i></button>
+                <button onClick={handleClick} className="add-btn">Add Note<i className="fa-solid fa-pen-to-square"></i></button>
             </section>
         </div>
     );
