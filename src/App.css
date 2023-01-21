@@ -17,6 +17,52 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+/* Nav component  */
+.nav-bar {
+  color: blue;
+  position: fixed;
+  top: 3%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 400px;
+  width: 100%;
+}
+
+.nav-items {
+  display: flex;
+  list-style-type: none;
+  justify-content: center;
+  background-color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.nav-items:hover {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 255, 0.5);
+}
+
+.nav-items>li {
+  padding: 10px 15px;
+  transition: 0.3s;
+}
+
+.active {
+  background-color: blue;
+  color: white;
+}
+
+.not-active {
+  background-color: white;
+  color: black;
+}
+
+.nav-items>li:hover {
+  color: white;
+  background-color: blue;
+}
+
+
 /* Notes Compoent  */
 
 .add-note-box {
