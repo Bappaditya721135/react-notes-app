@@ -11,15 +11,10 @@ export default function Notes() {
     }
 
     const [notes, setNotes] = React.useState([]);
-    // This state is only for rerendering 
-    // const [render, setRender] = React.useState(false);
-
-    // function rerender() {
-    //     setRender(prevRender => !prevRender);
-    // }
     console.log(notes.length + 1)
     // this function will recieve the note entered by user in addNote component 
     function reciveData(noteObj) {
+        console.log(noteObj)
         handleClick();
         const newObj = {
             ...noteObj,

@@ -14,7 +14,11 @@ export default function AddNote(props) {
 
 
     // store note in state 
-    const [note, setNote] = React.useState({});
+    const [note, setNote] = React.useState({
+        date: "",
+        title: "",
+        note: "",
+    });
 
     // when user inputs data 
     function handleChange(event) {
@@ -30,10 +34,20 @@ export default function AddNote(props) {
 
     // when data will be sent 
     function sendData() {
-        props.reciveData(note);
-        // i = i + 1;
-        // console.log(i);
-        // props.rerender();
+        let data = true;
+        const valArr = Object.values(note);
+        for(let i=0; i<valArr.length; i++) {
+            console.log(valArr[i]);
+            if(valArr[i] == "") {
+                data = false;
+            }
+        }
+        if(data == true) {
+            props.reciveData(note);
+        }
+        else {
+            alert("fill out your note");
+        }
     }
 
     
