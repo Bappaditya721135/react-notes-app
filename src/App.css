@@ -62,6 +62,10 @@ body::-webkit-scrollbar {
   background-color: blue;
 }
 
+.main-content {
+  margin-top: 100px;
+}
+
 
 /* Notes Compoent  */
 
