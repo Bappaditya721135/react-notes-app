@@ -20,6 +20,8 @@ export default function AddNote(props) {
         note: "",
     });
 
+    // console.log(note.length)
+
     // when user inputs data 
     function handleChange(event) {
         setNote(prevNote => {
@@ -37,7 +39,6 @@ export default function AddNote(props) {
         let data = true;
         const valArr = Object.values(note);
         for(let i=0; i<valArr.length; i++) {
-            console.log(valArr[i]);
             if(valArr[i] == "") {
                 data = false;
             }
@@ -56,10 +57,10 @@ export default function AddNote(props) {
         <div className="add-note-container">
 
             <label htmlFor="title">Title</label>
-            <input type="text" onChange={handleChange} name="title" id="title" maxLength="90"  placeholder="title.." required />
+            <input type="text" onChange={handleChange} name="title" id="title" maxLength="90"  placeholder="title.." autoFocus />
 
             <label htmlFor="note">Note</label>
-            <textarea onChange={handleChange} name="note" id="note" placeholder="write your note here" required ></textarea>
+            <textarea onChange={handleChange} name="note" id="note" placeholder="write your note here" ></textarea>
 
             <button onClick={sendData} className="add">add</button>
         </div>

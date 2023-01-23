@@ -25,13 +25,15 @@ export default function NoteCard(props) {
             </div>
         {/* </abbr> */}
         {bigNote && <BigNote 
+                    id={props.id}
                     title={props.title} 
                     note={props.note} 
                     handleCardClick={handleCardClick}
                     date={props.date}
+                    editData={props.editData}
                     />}
                     
-        {bigNote && <div onClick={handleCardClick} className="background-blur"></div>}
+        {/* {bigNote && <div onClick={handleCardClick} className="background-blur"></div>} */}
         </>
     );
 }

@@ -11,10 +11,8 @@ export default function Notes() {
     }
 
     const [notes, setNotes] = React.useState([]);
-    console.log(notes.length + 1)
     // this function will recieve the note entered by user in addNote component 
     function reciveData(noteObj) {
-        console.log(noteObj)
         handleClick();
         const newObj = {
             ...noteObj,
@@ -22,12 +20,22 @@ export default function Notes() {
         }
         setNotes(prevNotes => [...prevNotes,newObj]);
     }
-    
+
+    // edit function
+    function editData(editObj) {
+    //    console.log(editObj);
+    setNotes(prevNotes => {
+        const newArr = prevNotes.map(obj => {
+            return obj.id === editObj.id ? editObj : obj;
+        })
+        return newArr;
+    })
+    }
 
     return (
         <div className="notes-container">
             <section className="notes">
-                {notes.map(item => <NoteCard key={item.id} title={item.title} note={item.note} date={item.date} />)}
+                {notes.map(item => <NoteCard key={item.id} id={item.id} title={item.title} note={item.note} date={item.date} editData={editData} />)}
                 
             </section>
 
