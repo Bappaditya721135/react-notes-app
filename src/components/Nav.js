@@ -4,6 +4,7 @@ import EditedNotes from "../components/EditedNotes";
 import DeletedNotes from "../components/DeletedNotes";
 
 export default function Nav() {
+    
     const [activeNav, setActiveNav] = React.useState({
         notes: true,
         editedNotes: false,
@@ -41,7 +42,17 @@ export default function Nav() {
 
     // edit function to add edited notes in notes state array
     function editData(editObj) {
-    //    console.log(editObj);
+      
+        setEditedNotes(prevEditedNotes => {
+            return [
+                ...prevEditedNotes,
+                editObj,
+            ]
+        })
+        
+
+
+    // check the id of the object and replace it in notes array 
     setNotes(prevNotes => {
         const newArr = prevNotes.map(obj => {
             return obj.id === editObj.id ? editObj : obj;
@@ -68,7 +79,7 @@ export default function Nav() {
         </nav>
         <div className="main-content">
             {activeNav.notes && <Notes notes={notes} reciveData={reciveData} editData={editData} addNoteBox={addNoteBox} addNoteClick={handleClick} />}
-            {activeNav.editedNotes && <EditedNotes />}
+            {activeNav.editedNotes && <EditedNotes editedNotes={editedNotes} />}
             {activeNav.deletedNotes && <DeletedNotes />}
         </div>
         </>

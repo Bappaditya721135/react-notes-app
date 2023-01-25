@@ -46,7 +46,7 @@ export default function BigNote(props) {
                 <div className="big-note-disc">{props.note}</div>
             </div>
         </div>
-        {edit && <EditNote id={props.id} title={props.title} note={props.note} editData={props.editData} handleCardClick={props.handleCardClick} />}
+        {edit && <EditNote id={props.id} title={props.title} note={props.note} editData={props.editData} date={props.date} handleCardClick={props.handleCardClick} />}
         </>
     );
 }

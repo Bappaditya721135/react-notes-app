@@ -12,9 +12,10 @@ export default function EditNote(props) {
 
     // This state will change when user changes the note or title 
     const [editNote, setEditNote] = React.useState({
-        id:props.id,
+        id: props.id,
         title: props.title,
-        note:props.note,
+        note: props.note,
+        date: props.date
     });
 
 
@@ -23,7 +24,7 @@ export default function EditNote(props) {
         setEditNote(prevEditNote => {
             return {
                 ...prevEditNote,
-                date: date,
+                editedDate: date,
                 edited: true,
                 [event.target.name]: event.target.value,
             }

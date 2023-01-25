@@ -1,7 +1,17 @@
-export default function EditedNotes() {
+import NoteCard from "./NoteCard";
+
+export default function EditedNotes(props) {
     return(
         <div className="edited-notes-container">
-            <p>this is where all the edited notes will show</p>
+            {props.editedNotes.map(obj => <NoteCard 
+                                    key={obj.id} 
+                                    id={obj.id} 
+                                    title={obj.title} 
+                                    note={obj.note} 
+                                    date={obj.date} 
+                                    editData={props.editData} 
+                                    edited={obj.edited} />
+            )}
         </div>
     );
 }

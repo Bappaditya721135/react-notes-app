@@ -3,6 +3,7 @@ import BigNote from "./BigNote";
 import BackgroundBlur from "./BackgroundBlur";
 
 export default function NoteCard(props) {
+    
     // This state will store the bigNote 
     const [bigNote, setBigNote] = React.useState(false);
 
