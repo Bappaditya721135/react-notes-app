@@ -176,11 +176,18 @@ body::-webkit-scrollbar {
 
 /* NoteCard components  */
 
+.edited {
+  position: absolute;
+  top: 5%;
+  left: 70%;
+}
+
 .abbr {
   display: inline-block;
 }
 
 .note-card {
+  position: relative;
   display: inline-block;
   width: 300px;
   height: 300px;
