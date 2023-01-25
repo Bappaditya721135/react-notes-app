@@ -1,6 +1,6 @@
-import { click } from "@testing-library/user-event/dist/click";
 import React from "react";
 import BigNote from "./BigNote";
+import BackgroundBlur from "./BackgroundBlur";
 
 export default function NoteCard(props) {
     // This state will store the bigNote 
@@ -18,6 +18,7 @@ export default function NoteCard(props) {
     <>
         {/* <abbr className="abbr" title="click to see the full note"> */}
             <div onClick={handleCardClick} className="note-card">
+                {props.edited && <p className="edited">(edited)</p>}
                 <p className="note-title ">{props.title}</p>
                 <p className="note-disc ">{props.note}</p>
                 <hr />
@@ -33,7 +34,7 @@ export default function NoteCard(props) {
                     editData={props.editData}
                     />}
                     
-        {/* {bigNote && <div onClick={handleCardClick} className="background-blur"></div>} */}
+        {bigNote && <BackgroundBlur handleClick={handleCardClick} />}
         </>
     );
 }

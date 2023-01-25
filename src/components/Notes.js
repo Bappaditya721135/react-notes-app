@@ -1,5 +1,6 @@
 import React from "react";
 import AddNote from "./AddNote";
+import BackgroundBlur from "./BackgroundBlur";
 import NoteCard from "./NoteCard";
 
 export default function Notes() {
@@ -16,6 +17,7 @@ export default function Notes() {
         handleClick();
         const newObj = {
             ...noteObj,
+            edited: false,
             id: notes.length +1,
         }
         setNotes(prevNotes => [...prevNotes,newObj]);
@@ -35,12 +37,12 @@ export default function Notes() {
     return (
         <div className="notes-container">
             <section className="notes">
-                {notes.map(item => <NoteCard key={item.id} id={item.id} title={item.title} note={item.note} date={item.date} editData={editData} />)}
+                {notes.map(item => <NoteCard key={item.id} id={item.id} title={item.title} note={item.note} date={item.date} editData={editData} edited={item.edited} />)}
                 
             </section>
 
             {addNoteBox && <section className="add-note-box">
-                <div onClick={handleClick} className="background-blur"></div>
+                <BackgroundBlur handleClick={handleClick} />
                 <AddNote reciveData={reciveData} />
             </section>}
             <section className="add-btn-section">

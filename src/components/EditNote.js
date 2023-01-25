@@ -20,11 +20,11 @@ export default function EditNote(props) {
 
 
     function handleChange(event) {
-        console.log(event.target.name);
         setEditNote(prevEditNote => {
             return {
                 ...prevEditNote,
                 date: date,
+                edited: true,
                 [event.target.name]: event.target.value,
             }
         })
@@ -32,6 +32,7 @@ export default function EditNote(props) {
 
     function handleSave() {
         props.editData(editNote);
+        props.handleCardClick();
     }
     
 
