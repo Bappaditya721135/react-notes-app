@@ -2,7 +2,6 @@ import React from "react";
 import EditNote from "./EditNote";
 
 export default function BigNote(props) {
-    console.log(props)
     const [dotBtn, setDotBtn] = React.useState(false);
 
 

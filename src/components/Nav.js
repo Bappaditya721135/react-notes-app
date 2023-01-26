@@ -45,10 +45,7 @@ export default function Nav() {
     function editData(editObj) {
       
         setEditedNotes(prevEditedNotes => {
-            return [
-                ...prevEditedNotes,
-                editObj,
-            ]
+            return (prevEditedNotes.map(obj => obj.id === editObj.id ? editObj : obj));
         })
         
 
@@ -61,6 +58,7 @@ export default function Nav() {
         return newArr;
     })
     }
+    console.log(editedNotes.length);
 
     // Add note component toggle function 
     const [addNoteBox, setAddNoteBox] = React.useState(false);
