@@ -41,7 +41,7 @@ export default function EditNote(props) {
     return(
         <div className="edit-note-form">
             {/* date */}
-            <div className="edit-date">{`edited on ${date}`}</div>
+            <div className="edit-date">{`editing on ${date}`}</div>
 
             {/* edit title  */}
             <div className="edit-title-section">

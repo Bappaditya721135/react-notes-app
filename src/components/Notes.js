@@ -4,7 +4,6 @@ import BackgroundBlur from "./BackgroundBlur";
 import NoteCard from "./NoteCard";
 
 export default function Notes(props) {
-    console.log(props)
 
     return (
         <div className="notes-container">
@@ -16,7 +15,8 @@ export default function Notes(props) {
                                     note={item.note} 
                                     date={item.date} 
                                     editData={props.editData} 
-                                    edited={item.edited} />)}
+                                    edited={item.edited}
+                                    editedDate={item.editedDate} />)}
                 
             </section>
 

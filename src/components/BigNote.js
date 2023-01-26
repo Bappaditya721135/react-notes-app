@@ -2,6 +2,7 @@ import React from "react";
 import EditNote from "./EditNote";
 
 export default function BigNote(props) {
+    console.log(props)
     const [dotBtn, setDotBtn] = React.useState(false);
 
 
@@ -30,7 +31,7 @@ export default function BigNote(props) {
         <>
             <div className="big-note-card">
                 <div className="date-dot-btn">
-                <div className="note-date">Date-{props.date}</div>
+                <div className="note-date">{props.edited ? `last edited on - ${props.editedDate}` : `written on - ${props.date}`}</div>
                 <i onClick={handleClick} className="fa-solid fa-ellipsis-vertical dot-btn" style={style}>
                 {dotBtn && 
                     <ul className="dot-btn-option">

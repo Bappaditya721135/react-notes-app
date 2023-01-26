@@ -35,6 +35,7 @@ export default function Nav() {
         const newObj = {
             ...noteObj,
             edited: false,
+            editedDate: "",
             id: notes.length +1,
         }
         setNotes(prevNotes => [...prevNotes,newObj]);
@@ -67,7 +68,6 @@ export default function Nav() {
     function handleClick() {
         setAddNoteBox(prevAddNoteBox => !prevAddNoteBox);
     }
-
     return (
         <>
         <nav className="nav-bar">
