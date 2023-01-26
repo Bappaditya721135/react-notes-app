@@ -443,6 +443,11 @@ body::-webkit-scrollbar {
   margin-bottom: 20px;
 }
 
+#edit-title:focus-visible,
+#edit-note:focus-visible {
+  outline: 1px solid blue;
+}
+
 .save-button-section {
   text-align: center;
 }
