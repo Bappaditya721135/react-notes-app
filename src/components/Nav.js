@@ -58,7 +58,6 @@ export default function Nav() {
         return newArr;
     })
     }
-    console.log(editedNotes.length);
 
     // Add note component toggle function 
     const [addNoteBox, setAddNoteBox] = React.useState(false);

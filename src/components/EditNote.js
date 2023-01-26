@@ -46,7 +46,7 @@ export default function EditNote(props) {
             {/* edit title  */}
             <div className="edit-title-section">
                 <label htmlFor="edit-title">edit title</label>
-                <input onChange={handleChange} id="edit-title" className="edit-title" type="text" name="title" value={editNote.title} />
+                <input onChange={handleChange} id="edit-title" className="edit-title" type="text" name="title" value={editNote.title} autoFocus />
             </div>
 
             {/* edit note */}
