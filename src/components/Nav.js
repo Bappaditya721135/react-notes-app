@@ -44,6 +44,7 @@ export default function Nav() {
     // edit function to add edited notes in notes state array
     function editData(editObj) {
       
+        // this will add the edited object in editedNotes state 
         setEditedNotes(prevEditedNotes => {
             return (prevEditedNotes.map(obj => obj.id === editObj.id ? editObj : obj));
         })
