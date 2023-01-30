@@ -1,8 +1,12 @@
 import React from "react";
+import DeletionConfirmation from "./DeletionCofirmation";
 import EditNote from "./EditNote";
 
 export default function BigNote(props) {
+
     const [dotBtn, setDotBtn] = React.useState(false);
+    // This state will hold delete value 
+    const [deleteConfirm, setDeleteConfirm] = React.useState(false);
 
 
     // state for editComponent 
@@ -19,8 +23,21 @@ export default function BigNote(props) {
 
     // when delete button is clicked this function will run 
     function handleDeleteClick() {
-        console.log("deleted");
+        setDeleteConfirm(prev => !prev);
     }
+
+    // this function will run when user press yes or no in deletion box 
+    function deleteObj(value) {
+        if(value === true) {
+            const index = props.id;
+            props.deleteData(index);
+            handleDeleteClick();
+        }
+        else {
+            handleDeleteClick();
+        }
+    }
+
 
     const style = {
         backgroundColor: dotBtn ? "#e4e2e2" : "none",
@@ -47,6 +64,7 @@ export default function BigNote(props) {
             </div>
         </div>
         {edit && <EditNote id={props.id} title={props.title} note={props.note} editData={props.editData} date={props.date} handleCardClick={props.handleCardClick} />}
+        {deleteConfirm && <DeletionConfirmation deleteObj={deleteObj} />}
         </>
     );
 }

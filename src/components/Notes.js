@@ -18,7 +18,9 @@ export default function Notes(props) {
                                      date={item.date} 
                                      editData={props.editData} 
                                      edited={item.edited}
-                                     editedDate={item.editedDate} />) : <p className="default-text">You don't have notes yet</p>}
+                                     editedDate={item.editedDate}
+                                     deleteData={props.deleteData}
+                                     />) : <p className="default-text">You don't have notes yet</p>}
                 
             </section>
 
