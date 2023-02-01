@@ -34,6 +34,7 @@ export default function NoteCard(props) {
                     date={props.date}
                     editedDate={props.editedDate}
                     editData={props.editData}
+                    deleteData={props.deleteData}
                     edited={props.edited}
                     />}
                     

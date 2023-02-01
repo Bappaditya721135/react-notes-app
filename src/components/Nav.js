@@ -41,15 +41,12 @@ export default function Nav() {
         setNotes(prevNotes => [...prevNotes,newObj]);
     }
 
+
+
+
     // edit function to add edited notes in notes state array
     function editData(editObj) {
-      
-        setEditedNotes(prevEditedNotes => {
-            return (prevEditedNotes.map(obj => obj.id === editObj.id ? editObj : obj));
-        })
-        
-
-
+    
     // check the id of the object and replace it in notes array 
     setNotes(prevNotes => {
         const newArr = prevNotes.map(obj => {
@@ -57,7 +54,52 @@ export default function Nav() {
         })
         return newArr;
     })
-    }
+
+
+
+    // set the edited object inside editedNotes state 
+    setEditedNotes(prevEditedNotes => {
+        let match = false;
+        let index = 0;
+        if(prevEditedNotes.length > 0) {
+            for(let i=0; i<prevEditedNotes.length; i++) {
+                if(prevEditedNotes[i].id === editObj.id) {
+                    match = true;
+                    index = i;
+                }
+            }
+            if(match === true) {
+                prevEditedNotes.splice(index, 1, editObj);
+                return prevEditedNotes;
+            }
+            else {
+                prevEditedNotes.push(editObj);
+                return prevEditedNotes;
+            }
+        }
+        else {
+            return [...prevEditedNotes,editObj];
+        }
+    })
+}
+
+// this function will delete the object from the note arr and set it in deleted notes array 
+function deleteData(deleteObj) {
+    // thsi function wil add the delted object in deletedNotes array 
+    setDeletedNotes(prevDeletedNotes => [...prevDeletedNotes,deleteObj])
+
+    // this function will remove the object from the state array 
+    setNotes(prevNotes => {
+        return prevNotes.filter(obj => obj.id !== deleteObj.id);
+    })
+
+    // this function will remove the object from the edited notes array if the object is in there 
+    setEditedNotes(prevEditedNotes => {
+        return prevEditedNotes.filter(obj => obj.id !== deleteObj.id);
+    })
+
+}
+
 
     // Add note component toggle function 
     const [addNoteBox, setAddNoteBox] = React.useState(false);
@@ -75,9 +117,9 @@ export default function Nav() {
             </ul>
         </nav>
         <div className="main-content">
-            {activeNav.notes && <Notes notes={notes} reciveData={reciveData} editData={editData} addNoteBox={addNoteBox} addNoteClick={handleClick} />}
+            {activeNav.notes && <Notes notes={notes} reciveData={reciveData} editData={editData} deleteData={deleteData} addNoteBox={addNoteBox} addNoteClick={handleClick} />}
             {activeNav.editedNotes && <EditedNotes editedNotes={editedNotes} />}
-            {activeNav.deletedNotes && <DeletedNotes />}
+            {activeNav.deletedNotes && <DeletedNotes deletedNotes={deletedNotes} />}
         </div>
         </>
     );
