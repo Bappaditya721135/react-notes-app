@@ -63,7 +63,7 @@ console.log(data);
         </nav>
         <div className="main-content">
             {activeNav.notes && <Notes data={data} reciveData={reciveData} editObject={editObject} />}
-            {activeNav.editedNotes && <EditedNotes />}
+            {activeNav.editedNotes && <EditedNotes data={data}/>}
         </div>
         </>
     );
