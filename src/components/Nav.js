@@ -83,25 +83,23 @@ export default function Nav() {
     })
 }
 
+// this function will delete the object from the note arr and set it in deleted notes array 
+function deleteData(deleteObj) {
+    // thsi function wil add the delted object in deletedNotes array 
+    setDeletedNotes(prevDeletedNotes => [...prevDeletedNotes,deleteObj])
 
+    // this function will remove the object from the state array 
+    setNotes(prevNotes => {
+        return prevNotes.filter(obj => obj.id !== deleteObj.id);
+    })
 
-    // this function will delete the note 
-    // function deleteData(objId) {
-    //     // this function will add the deleted obj in deletedNotes arr 
-    //     setDeletedNotes(prevDeletedNotes => {
-    //         const tempArr = notes.filter(obj => obj.id === objId);
-    //         return [...prevDeletedNotes,tempArr];
-    //     })
+    // this function will remove the object from the edited notes array if the object is in there 
+    setEditedNotes(prevEditedNotes => {
+        return prevEditedNotes.filter(obj => obj.id !== deleteObj.id);
+    })
 
+}
 
-
-    //     // This function will remove the object from notes arr 
-    //     setNotes(prevNotes => {
-    //         const tempArr = prevNotes.filter(obj => obj.id != objId)
-    //         console.log(tempArr);
-    //         return tempArr;
-    //     })
-    // }
 
     // Add note component toggle function 
     const [addNoteBox, setAddNoteBox] = React.useState(false);
@@ -119,9 +117,9 @@ export default function Nav() {
             </ul>
         </nav>
         <div className="main-content">
-            {activeNav.notes && <Notes notes={notes} reciveData={reciveData} editData={editData} addNoteBox={addNoteBox} addNoteClick={handleClick} />}
+            {activeNav.notes && <Notes notes={notes} reciveData={reciveData} editData={editData} deleteData={deleteData} addNoteBox={addNoteBox} addNoteClick={handleClick} />}
             {activeNav.editedNotes && <EditedNotes editedNotes={editedNotes} />}
-            {/* {activeNav.deletedNotes && <DeletedNotes deletedNotes={deletedNotes} />} */}
+            {activeNav.deletedNotes && <DeletedNotes deletedNotes={deletedNotes} />}
         </div>
         </>
     );

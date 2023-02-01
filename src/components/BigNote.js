@@ -3,6 +3,17 @@ import DeletionConfirmation from "./DeletionCofirmation";
 import EditNote from "./EditNote";
 
 export default function BigNote(props) {
+    // delete date 
+    const d = new Date();
+    const day = d.getDate();
+    const m = d.getMonth()+1;
+    const month = m>9 ? m : `0${m}`;
+    const year = d.getFullYear();
+
+    const date = `${day}/${month}/${year}`;
+
+
+    console.log(props);
 
     const [dotBtn, setDotBtn] = React.useState(false);
     // This state will hold delete value 
@@ -29,8 +40,8 @@ export default function BigNote(props) {
     // this function will run when user press yes or no in deletion box 
     function deleteObj(value) {
         if(value === true) {
-            const index = props.id;
-            props.deleteData(index);
+            const deleteObj = {...props,deleteDate: date}
+            props.deleteData(deleteObj);
             handleDeleteClick();
         }
         else {
