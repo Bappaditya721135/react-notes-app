@@ -3,11 +3,12 @@ export default function AddNote(props) {
 
 
     // date for each note object 
-    const d = new Date();
-    const day = d.getDate();
-    const m = d.getMonth()+1;
+    const dateTime = new Date();
+    const d = dateTime.getDate();
+    const day = d>9 ? d : `0${d}`;
+    const m = dateTime.getMonth()+1;
     const month = m>9 ? m : `0${m}`;
-    const year = d.getFullYear();
+    const year = dateTime.getFullYear();
 
     const date = `${day}/${month}/${year}`;
 
@@ -18,6 +19,10 @@ export default function AddNote(props) {
         date: "",
         title: "",
         note: "",
+        edited: false,
+        editDate: "",
+        deleted: false,
+        deleteDate: "",
     });
 
     // console.log(note.length)
@@ -35,16 +40,18 @@ export default function AddNote(props) {
 
 
     // when data will be sent 
+    // the -4 in for loop is to avoide editedate and deleteDate empty string value 
     function sendData() {
         let data = true;
         const valArr = Object.values(note);
-        for(let i=0; i<valArr.length; i++) {
+        for(let i=0; i<valArr.length-4; i++) {
             if(valArr[i] == "") {
                 data = false;
             }
         }
         if(data == true) {
             props.reciveData(note);
+            props.handleAddNoteClick();
         }
         else {
             alert("fill out your note");

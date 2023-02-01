@@ -32,8 +32,8 @@ export default function NoteCard(props) {
                     note={props.note} 
                     handleCardClick={handleCardClick}
                     date={props.date}
-                    editedDate={props.editedDate}
-                    editData={props.editData}
+                    editDate={props.editDate}
+                    editObject={props.editObject}
                     deleteData={props.deleteData}
                     edited={props.edited}
                     />}

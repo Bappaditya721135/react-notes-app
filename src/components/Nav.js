@@ -1,7 +1,6 @@
 import React from "react";
-import Notes from "../components/Notes";
-import EditedNotes from "../components/EditedNotes";
-import DeletedNotes from "../components/DeletedNotes";
+import Notes from "./Notes";
+import EditedNotes from "./EditedNotes"
 
 export default function Nav() {
     
@@ -22,91 +21,37 @@ export default function Nav() {
         })
     }
 
-
-    // all the states for notes, edited notes and deleted notes
-    const [notes, setNotes] = React.useState([]);
-    const [editedNotes, setEditedNotes] = React.useState([]);
-    const [deletedNotes, setDeletedNotes] = React.useState([]);
+// this is the state where all the object note will be stored 
+const [data, setData] = React.useState([]);
 
 
-// This function will recive the data object from add note component and save it inside notes array 
-    function reciveData(noteObj) {
-        handleClick();
-        const newObj = {
-            ...noteObj,
-            edited: false,
-            editedDate: "",
-            id: notes.length +1,
-        }
-        setNotes(prevNotes => [...prevNotes,newObj]);
-    }
+// this function will edite the objects in data array 
+function editObject(object) {
+    const index = object.id -1;
+    setData(prevData => {
+        prevData.splice(index,1,object)
+        return [...prevData];
+    })
+}
+
+// this id will be the id of each object 
+let objId = data.length;
 
 
 
+// this function will recive the note object from Add note component 
+function reciveData(object) {
+    objId +=1;
+    const newObj = {...object, id: objId};
+    console.log(newObj);
+    setData(prevData => [...prevData,newObj])
 
-    // edit function to add edited notes in notes state array
-    function editData(editObj) {
     
-    // check the id of the object and replace it in notes array 
-    setNotes(prevNotes => {
-        const newArr = prevNotes.map(obj => {
-            return obj.id === editObj.id ? editObj : obj;
-        })
-        return newArr;
-    })
-
-
-
-    // set the edited object inside editedNotes state 
-    setEditedNotes(prevEditedNotes => {
-        let match = false;
-        let index = 0;
-        if(prevEditedNotes.length > 0) {
-            for(let i=0; i<prevEditedNotes.length; i++) {
-                if(prevEditedNotes[i].id === editObj.id) {
-                    match = true;
-                    index = i;
-                }
-            }
-            if(match === true) {
-                prevEditedNotes.splice(index, 1, editObj);
-                return prevEditedNotes;
-            }
-            else {
-                prevEditedNotes.push(editObj);
-                return prevEditedNotes;
-            }
-        }
-        else {
-            return [...prevEditedNotes,editObj];
-        }
-    })
 }
 
-// this function will delete the object from the note arr and set it in deleted notes array 
-function deleteData(deleteObj) {
-    // thsi function wil add the delted object in deletedNotes array 
-    setDeletedNotes(prevDeletedNotes => [...prevDeletedNotes,deleteObj])
-
-    // this function will remove the object from the state array 
-    setNotes(prevNotes => {
-        return prevNotes.filter(obj => obj.id !== deleteObj.id);
-    })
-
-    // this function will remove the object from the edited notes array if the object is in there 
-    setEditedNotes(prevEditedNotes => {
-        return prevEditedNotes.filter(obj => obj.id !== deleteObj.id);
-    })
-
-}
+console.log(data);
 
 
-    // Add note component toggle function 
-    const [addNoteBox, setAddNoteBox] = React.useState(false);
-
-    function handleClick() {
-        setAddNoteBox(prevAddNoteBox => !prevAddNoteBox);
-    }
     return (
         <>
         <nav className="nav-bar">
@@ -117,9 +62,8 @@ function deleteData(deleteObj) {
             </ul>
         </nav>
         <div className="main-content">
-            {activeNav.notes && <Notes notes={notes} reciveData={reciveData} editData={editData} deleteData={deleteData} addNoteBox={addNoteBox} addNoteClick={handleClick} />}
-            {activeNav.editedNotes && <EditedNotes editedNotes={editedNotes} />}
-            {activeNav.deletedNotes && <DeletedNotes deletedNotes={deletedNotes} />}
+            {activeNav.notes && <Notes data={data} reciveData={reciveData} editObject={editObject} />}
+            {activeNav.editedNotes && <EditedNotes />}
         </div>
         </>
     );

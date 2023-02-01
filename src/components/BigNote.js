@@ -3,7 +3,7 @@ import DeletionConfirmation from "./DeletionCofirmation";
 import EditNote from "./EditNote";
 
 export default function BigNote(props) {
-    // delete date 
+
     const d = new Date();
     const day = d.getDate();
     const m = d.getMonth()+1;
@@ -13,7 +13,6 @@ export default function BigNote(props) {
     const date = `${day}/${month}/${year}`;
 
 
-    console.log(props);
 
     const [dotBtn, setDotBtn] = React.useState(false);
     // This state will hold delete value 
@@ -58,7 +57,7 @@ export default function BigNote(props) {
         <>
             <div className="big-note-card">
                 <div className="date-dot-btn">
-                <div className="note-date">{props.edited ? `last edited on - ${props.editedDate}` : `written on - ${props.date}`}</div>
+                <div className="note-date">{props.edited ? `last edited on - ${props.editDate}` : `written on - ${props.date}`}</div>
                 <i onClick={handleClick} className="fa-solid fa-ellipsis-vertical dot-btn" style={style}>
                 {dotBtn && 
                     <ul className="dot-btn-option">
@@ -74,7 +73,7 @@ export default function BigNote(props) {
                 <div className="big-note-disc">{props.note}</div>
             </div>
         </div>
-        {edit && <EditNote id={props.id} title={props.title} note={props.note} editData={props.editData} date={props.date} handleCardClick={props.handleCardClick} />}
+        {edit && <EditNote id={props.id} title={props.title} note={props.note} editObject={props.editObject} date={props.date} handleCardClick={props.handleCardClick} />}
         {deleteConfirm && <DeletionConfirmation deleteObj={deleteObj} />}
         </>
     );

@@ -1,11 +1,14 @@
 import React from "react";
 
 export default function EditNote(props) {
-    const d = new Date();
-    const day = d.getDate();
-    const m = d.getMonth()+1;
+
+    
+    const dateTime = new Date();
+    const d = dateTime.getDate();
+    const day = d>9 ? d : `0${d}`;
+    const m = dateTime.getMonth()+1;
     const month = m>9 ? m : `0${m}`;
-    const year = d.getFullYear();
+    const year = dateTime.getFullYear();
 
     const date = `${day}/${month}/${year}`;
 
@@ -24,7 +27,7 @@ export default function EditNote(props) {
         setEditNote(prevEditNote => {
             return {
                 ...prevEditNote,
-                editedDate: date,
+                editDate: date,
                 edited: true,
                 [event.target.name]: event.target.value,
             }
@@ -32,7 +35,7 @@ export default function EditNote(props) {
     }
 
     function handleSave() {
-        props.editData(editNote);
+        props.editObject(editNote);
         props.handleCardClick();
     }
     
