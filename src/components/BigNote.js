@@ -39,8 +39,10 @@ export default function BigNote(props) {
     // this function will run when user press yes or no in deletion box 
     function deleteObj(value) {
         if(value === true) {
-            const deleteObj = {...props,deleteDate: date}
-            props.deleteData(deleteObj);
+            const deleteObj = {...props,
+                deleted: true,
+                deleteDate: date}
+            props.deleteObject(deleteObj);
             handleDeleteClick();
         }
         else {
@@ -73,7 +75,7 @@ export default function BigNote(props) {
                 <div className="big-note-disc">{props.note}</div>
             </div>
         </div>
-        {edit && <EditNote id={props.id} title={props.title} note={props.note} editObject={props.editObject} date={props.date} handleCardClick={props.handleCardClick} />}
+        {edit && <EditNote id={props.id} title={props.title} note={props.note} deleted={props.deleted} deleteData={props.deleteDate} editObject={props.editObject} date={props.date} handleCardClick={props.handleCardClick} />}
         {deleteConfirm && <DeletionConfirmation deleteObj={deleteObj} />}
         </>
     );

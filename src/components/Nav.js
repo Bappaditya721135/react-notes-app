@@ -1,6 +1,7 @@
 import React from "react";
 import Notes from "./Notes";
 import EditedNotes from "./EditedNotes"
+import DeletedNotes from "./DeletedNotes"
 
 export default function Nav() {
     
@@ -34,6 +35,15 @@ function editObject(object) {
     })
 }
 
+
+function deleteObject(object) {
+    
+    setData(prevData => {
+        const arr = prevData.map(obj => obj.id === object.id ? object : obj);
+        return [...arr];
+    })
+}
+
 // this id will be the id of each object 
 let objId = data.length;
 
@@ -62,8 +72,9 @@ console.log(data);
             </ul>
         </nav>
         <div className="main-content">
-            {activeNav.notes && <Notes data={data} reciveData={reciveData} editObject={editObject} />}
+            {activeNav.notes && <Notes data={data} reciveData={reciveData} editObject={editObject} deleteObject={deleteObject} />}
             {activeNav.editedNotes && <EditedNotes data={data}/>}
+            {activeNav.deletedNotes && <DeletedNotes data={data} /> }
         </div>
         </>
     );

@@ -43,6 +43,8 @@ import BackgroundBlur from "./BackgroundBlur"
 
  export default function Notes(props) {
 
+    const notes = props.data.filter(obj => obj.deleted !== true);
+
     const [addNotebox, setAddNoteBox] = React.useState(false);
 
     // this function will toggle the add note box 
@@ -53,7 +55,7 @@ import BackgroundBlur from "./BackgroundBlur"
         <div className="notes-container">
             {/* this is the section where all the notes will show  */}
             <section className="notes">
-                {props.data.length > 0 ? props.data.map(obj => <NoteCard 
+                {notes.length > 0 ? notes.map(obj => <NoteCard 
                                                                 key={obj.id} 
                                                                 id={obj.id} 
                                                                 title={obj.title} 
@@ -64,6 +66,7 @@ import BackgroundBlur from "./BackgroundBlur"
                                                                 deleted={obj.deleted}
                                                                 deleteDate={obj.deleteDate}
                                                                 editObject={props.editObject}
+                                                                deleteObject={props.deleteObject}
                                                                  />):
                 <p className="default-text">You don't have any notes</p>}
             </section>
