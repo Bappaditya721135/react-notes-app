@@ -50,6 +50,11 @@ export default function BigNote(props) {
         }
     }
 
+    // this function will permanently delete the obj 
+    function handlePermanentDeleteClick() {
+        handleDeleteClick();
+    }
+
 
     const style = {
         backgroundColor: dotBtn ? "#e4e2e2" : "none",
@@ -74,9 +79,13 @@ export default function BigNote(props) {
             <div className="note-section">
                 <div className="big-note-disc">{props.note}</div>
             </div>
+            {props.deleted && <div className="button-section">
+                    <button onClick={handlePermanentDeleteClick} className="permanent-del-btn">Delete Permanently</button>
+                    <button className="recover-btn">Recover</button>
+            </div>}
         </div>
         {edit && <EditNote id={props.id} title={props.title} note={props.note} deleted={props.deleted} deleteData={props.deleteDate} editObject={props.editObject} date={props.date} handleCardClick={props.handleCardClick} />}
-        {deleteConfirm && <DeletionConfirmation deleteObj={deleteObj} />}
+        {deleteConfirm && <DeletionConfirmation id={props.id} deleteObj={deleteObj} deleted={props.deleted} permanentDelete={props.permanentDelete} setDeleteConfirm={setDeleteConfirm} setBigNote={props.setBigNote} />}
         </>
     );
 }

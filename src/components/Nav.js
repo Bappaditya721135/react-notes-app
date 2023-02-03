@@ -36,6 +36,9 @@ function editObject(object) {
 }
 
 
+
+
+// this function will delete the object(not permanently)
 function deleteObject(object) {
     
     setData(prevData => {
@@ -43,6 +46,28 @@ function deleteObject(object) {
         return [...arr];
     })
 }
+
+// This function will run when delete permanently button is clicked 
+function permanentDelete(id) {
+    setData(prevData => {
+        const arr = prevData.filter(obj => obj.id !== id);
+        const newData = arr.map(obj => {
+            if(obj.id > id) {
+                obj.id = obj.id -1;
+                return obj;
+            }
+            else {
+                return obj;
+            }
+        })
+        return [...newData];
+    })
+    
+}
+
+
+
+
 
 // this id will be the id of each object 
 let objId = data.length;
@@ -74,7 +99,7 @@ console.log(data);
         <div className="main-content">
             {activeNav.notes && <Notes data={data} reciveData={reciveData} editObject={editObject} deleteObject={deleteObject} />}
             {activeNav.editedNotes && <EditedNotes data={data}/>}
-            {activeNav.deletedNotes && <DeletedNotes data={data} /> }
+            {activeNav.deletedNotes && <DeletedNotes data={data} permanentDelete={permanentDelete} /> }
         </div>
         </>
     );

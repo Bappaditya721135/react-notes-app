@@ -3,8 +3,6 @@ import BigNote from "./BigNote";
 import BackgroundBlur from "./BackgroundBlur";
 
 export default function NoteCard(props) {
-    console.log("notecard")
-    console.log(props)
     
     // This state will store the bigNote 
     const [bigNote, setBigNote] = React.useState(false);
@@ -40,6 +38,8 @@ export default function NoteCard(props) {
                     deleted={props.deleted}
                     deleteDate={props.deleteDate}
                     deleteObject={props.deleteObject}
+                    permanentDelete={props.permanentDelete}
+                    setBigNote={setBigNote}
                     />}
                     
         {bigNote && <BackgroundBlur handleClick={handleCardClick} />}
