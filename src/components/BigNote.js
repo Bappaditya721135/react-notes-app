@@ -39,13 +39,20 @@ export default function BigNote(props) {
     // this function will run when user press yes or no in deletion box 
     function deleteObj(value) {
         if(value === true) {
-            const deleteObj = {...props,deleteDate: date}
-            props.deleteData(deleteObj);
+            const deleteObj = {...props,
+                deleted: true,
+                deleteDate: date}
+            props.deleteObject(deleteObj);
             handleDeleteClick();
         }
         else {
             handleDeleteClick();
         }
+    }
+
+    // this function will permanently delete the obj 
+    function handlePermanentDeleteClick() {
+        handleDeleteClick();
     }
 
 
@@ -72,9 +79,13 @@ export default function BigNote(props) {
             <div className="note-section">
                 <div className="big-note-disc">{props.note}</div>
             </div>
+            {props.deleted && <div className="button-section">
+                    <button onClick={handlePermanentDeleteClick} className="permanent-del-btn">Delete Permanently</button>
+                    <button className="recover-btn">Recover</button>
+            </div>}
         </div>
-        {edit && <EditNote id={props.id} title={props.title} note={props.note} editObject={props.editObject} date={props.date} handleCardClick={props.handleCardClick} />}
-        {deleteConfirm && <DeletionConfirmation deleteObj={deleteObj} />}
+        {edit && <EditNote id={props.id} title={props.title} note={props.note} deleted={props.deleted} deleteData={props.deleteDate} editObject={props.editObject} date={props.date} handleCardClick={props.handleCardClick} />}
+        {deleteConfirm && <DeletionConfirmation id={props.id} deleteObj={deleteObj} deleted={props.deleted} permanentDelete={props.permanentDelete} setDeleteConfirm={setDeleteConfirm} setBigNote={props.setBigNote} />}
         </>
     );
 }

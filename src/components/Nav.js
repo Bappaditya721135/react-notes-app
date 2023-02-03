@@ -1,6 +1,7 @@
 import React from "react";
 import Notes from "./Notes";
 import EditedNotes from "./EditedNotes"
+import DeletedNotes from "./DeletedNotes"
 
 export default function Nav() {
     
@@ -34,6 +35,40 @@ function editObject(object) {
     })
 }
 
+
+
+
+// this function will delete the object(not permanently)
+function deleteObject(object) {
+    
+    setData(prevData => {
+        const arr = prevData.map(obj => obj.id === object.id ? object : obj);
+        return [...arr];
+    })
+}
+
+// This function will run when delete permanently button is clicked 
+function permanentDelete(id) {
+    setData(prevData => {
+        const arr = prevData.filter(obj => obj.id !== id);
+        const newData = arr.map(obj => {
+            if(obj.id > id) {
+                obj.id = obj.id -1;
+                return obj;
+            }
+            else {
+                return obj;
+            }
+        })
+        return [...newData];
+    })
+    
+}
+
+
+
+
+
 // this id will be the id of each object 
 let objId = data.length;
 
@@ -62,8 +97,9 @@ console.log(data);
             </ul>
         </nav>
         <div className="main-content">
-            {activeNav.notes && <Notes data={data} reciveData={reciveData} editObject={editObject} />}
+            {activeNav.notes && <Notes data={data} reciveData={reciveData} editObject={editObject} deleteObject={deleteObject} />}
             {activeNav.editedNotes && <EditedNotes data={data}/>}
+            {activeNav.deletedNotes && <DeletedNotes data={data} permanentDelete={permanentDelete} /> }
         </div>
         </>
     );

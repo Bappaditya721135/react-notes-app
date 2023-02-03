@@ -1,39 +1,3 @@
-// import React from "react";
-// import AddNote from "./AddNote";
-// // import BackgroundBlur from "./BackgroundBlur";
-// // import NoteCard from "./NoteCard";
-
-// export default function Notes(props) {
-//     const showNote = props.notes.length > 0;
-    
-
-//     return (
-//         <div className="notes-container">
-//             <section className="notes">
-//                 {showNote ? props.notes.map(item => <NoteCard 
-//                                      key={item.id} 
-//                                      id={item.id} 
-//                                      title={item.title} 
-//                                      note={item.note} 
-//                                      date={item.date} 
-//                                      editData={props.editData} 
-//                                      edited={item.edited}
-//                                      editedDate={item.editedDate}
-//                                      deleteData={props.deleteData}
-//                                      />) : <p className="default-text">You don't have notes yet</p>}
-                
-//             </section>
-
-//             {props.addNoteBox && <section className="add-note-box">
-//                 <BackgroundBlur handleClick={props.addNoteClick} />
-//                 <AddNote reciveData={props.reciveData} />
-//             </section>}
-//             <section className="add-btn-section">
-//                 <button onClick={props.addNoteClick} className="add-btn">Add Note<i className="fa-solid fa-pen-to-square"></i></button>
-//             </section>
-//         </div> 
-//     );
-// }
 
 import React from "react";
 import AddNote from "./AddNote"
@@ -42,6 +6,8 @@ import BackgroundBlur from "./BackgroundBlur"
 
 
  export default function Notes(props) {
+
+    const notes = props.data.filter(obj => obj.deleted !== true);
 
     const [addNotebox, setAddNoteBox] = React.useState(false);
 
@@ -53,7 +19,7 @@ import BackgroundBlur from "./BackgroundBlur"
         <div className="notes-container">
             {/* this is the section where all the notes will show  */}
             <section className="notes">
-                {props.data.length > 0 ? props.data.map(obj => <NoteCard 
+                {notes.length > 0 ? notes.map(obj => <NoteCard 
                                                                 key={obj.id} 
                                                                 id={obj.id} 
                                                                 title={obj.title} 
@@ -64,6 +30,7 @@ import BackgroundBlur from "./BackgroundBlur"
                                                                 deleted={obj.deleted}
                                                                 deleteDate={obj.deleteDate}
                                                                 editObject={props.editObject}
+                                                                deleteObject={props.deleteObject}
                                                                  />):
                 <p className="default-text">You don't have any notes</p>}
             </section>

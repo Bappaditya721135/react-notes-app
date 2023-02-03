@@ -18,8 +18,10 @@ export default function EditNote(props) {
         id: props.id,
         title: props.title,
         note: props.note,
-        date: props.date
-    });
+        date: props.date,
+        deleted: props.deleted,
+        deleteDate: props.deleteDate,
+        });
 
 
 

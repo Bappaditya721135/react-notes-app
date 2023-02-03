@@ -2,10 +2,13 @@ import NoteCard from "./NoteCard";
 
 export default function EditedNotes(props) {
     const arr = props.data.filter(obj => obj.edited === true);
+    console.log("edited")
+    console.log(arr)
+    const editedArr = arr.filter(obj => obj.deleted === false)
     return(
         <div className="edited-notes-container">
-            {arr.length > 0 ? 
-            arr.map(obj => <NoteCard 
+            {editedArr.length > 0 ? 
+            editedArr.map(obj => <NoteCard 
                             key={obj.id} 
                             id={obj.id} 
                             title={obj.title} 

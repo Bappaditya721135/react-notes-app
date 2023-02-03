@@ -32,10 +32,14 @@ export default function NoteCard(props) {
                     note={props.note} 
                     handleCardClick={handleCardClick}
                     date={props.date}
+                    edited={props.edited}
                     editDate={props.editDate}
                     editObject={props.editObject}
-                    deleteData={props.deleteData}
-                    edited={props.edited}
+                    deleted={props.deleted}
+                    deleteDate={props.deleteDate}
+                    deleteObject={props.deleteObject}
+                    permanentDelete={props.permanentDelete}
+                    setBigNote={setBigNote}
                     />}
                     
         {bigNote && <BackgroundBlur handleClick={handleCardClick} />}
