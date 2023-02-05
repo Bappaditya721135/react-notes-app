@@ -4,11 +4,12 @@ import EditNote from "./EditNote";
 
 export default function BigNote(props) {
 
-    const d = new Date();
-    const day = d.getDate();
-    const m = d.getMonth()+1;
+    const dateTime = new Date();
+    const d = dateTime.getDate();
+    const day = d>9 ? d : `0${d}`;
+    const m = dateTime.getMonth()+1;
     const month = m>9 ? m : `0${m}`;
-    const year = d.getFullYear();
+    const year = dateTime.getFullYear();
 
     const date = `${day}/${month}/${year}`;
 
@@ -56,6 +57,12 @@ export default function BigNote(props) {
     }
 
 
+    // function to recover the deleted object 
+    function handleRecoverClick() {
+        props.recoverObject(props.id);
+    }
+
+
     const style = {
         backgroundColor: dotBtn ? "#e4e2e2" : "none",
     }
@@ -81,7 +88,7 @@ export default function BigNote(props) {
             </div>
             {props.deleted && <div className="button-section">
                     <button onClick={handlePermanentDeleteClick} className="permanent-del-btn">Delete Permanently</button>
-                    <button className="recover-btn">Recover</button>
+                    <button onClick={handleRecoverClick} className="recover-btn">Recover</button>
             </div>}
         </div>
         {edit && <EditNote id={props.id} title={props.title} note={props.note} deleted={props.deleted} deleteData={props.deleteDate} editObject={props.editObject} date={props.date} handleCardClick={props.handleCardClick} />}

@@ -5,7 +5,7 @@ export default function DeletedNotes(props) {
 
     return(
         <div className="deleted-notes">
-            {props.data.length > 0 ?
+            {deletedObjects.length > 0 ?
             deletedObjects.map(obj => <NoteCard 
                                         key={obj.id} 
                                         id={obj.id} 
@@ -13,8 +13,9 @@ export default function DeletedNotes(props) {
                                         deleted={obj.deleted} 
                                         note={obj.note} 
                                         date={obj.deleteDate} 
-                                        permanentDelete={props.permanentDelete} />)
-             : <p className="default-text">You currently dont't have any edited notes</p>}
+                                        permanentDelete={props.permanentDelete}
+                                        recoverObject={props.recoverObject} />)
+             : <p className="default-text">You currently dont't have any deleted notes</p>}
         </div>
     );
 }

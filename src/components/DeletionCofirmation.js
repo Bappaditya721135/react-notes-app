@@ -1,6 +1,5 @@
 
 export default function DeletionConfirmation(props) {
-    console.log(props)
     function handleClick(event) {
         const value = event.target.name === 'delete' ? true : false;
         if(props.deleted === false) {

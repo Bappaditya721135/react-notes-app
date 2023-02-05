@@ -309,6 +309,37 @@ body::-webkit-scrollbar {
   color: blue;
 }
 
+.button-section {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.permanent-del-btn,
+.recover-btn {
+  border: none;
+  padding: 5px;
+  font-size: 1rem;
+  color: white;
+  border-radius: 5px;
+}
+
+.permanent-del-btn {
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.recover-btn {
+  background-color: rgba(0, 0, 255, 0.5);
+}
+
+
+.permanent-del-btn:hover {
+  background-color: red;
+}
+
+.recover-btn:hover {
+  background-color: blue;
+}
 
 /* 3 dot button in big note component  */
 

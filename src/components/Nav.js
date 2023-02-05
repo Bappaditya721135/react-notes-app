@@ -28,22 +28,10 @@ const [data, setData] = React.useState([]);
 
 // this function will edite the objects in data array 
 function editObject(object) {
-    const index = object.id -1;
+    const index = object.id -data.length;
     setData(prevData => {
         prevData.splice(index,1,object)
         return [...prevData];
-    })
-}
-
-
-
-
-// this function will delete the object(not permanently)
-function deleteObject(object) {
-    
-    setData(prevData => {
-        const arr = prevData.map(obj => obj.id === object.id ? object : obj);
-        return [...arr];
     })
 }
 
@@ -68,6 +56,38 @@ function permanentDelete(id) {
 
 
 
+// this function will delete the object(not permanently)
+function deleteObject(object) {
+    
+
+    setData(prevData => {
+        const arr = prevData.map(obj => obj.id === object.id ? object : obj);
+        return [...arr];
+    })
+
+}
+
+
+// this function will recover the deleted object 
+function recoverObject(id) {
+    setData(prevData => {
+        const newData = prevData.map(note => {
+            if(note.id === id) {
+                return {...note,deleted: false};
+            }
+            else {
+                return note;
+            }
+        })
+        return newData;
+    })
+}
+
+
+
+
+
+
 
 // this id will be the id of each object 
 let objId = data.length;
@@ -78,13 +98,11 @@ let objId = data.length;
 function reciveData(object) {
     objId +=1;
     const newObj = {...object, id: objId};
-    console.log(newObj);
-    setData(prevData => [...prevData,newObj])
+    setData(prevData => [newObj,...prevData])
 
     
 }
 
-console.log(data);
 
 
     return (
@@ -99,7 +117,7 @@ console.log(data);
         <div className="main-content">
             {activeNav.notes && <Notes data={data} reciveData={reciveData} editObject={editObject} deleteObject={deleteObject} />}
             {activeNav.editedNotes && <EditedNotes data={data}/>}
-            {activeNav.deletedNotes && <DeletedNotes data={data} permanentDelete={permanentDelete} /> }
+            {activeNav.deletedNotes && <DeletedNotes data={data} permanentDelete={permanentDelete} recoverObject={recoverObject} /> }
         </div>
         </>
     );
