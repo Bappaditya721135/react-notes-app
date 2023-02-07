@@ -14,7 +14,8 @@ export default function DeletedNotes(props) {
                                         note={obj.note} 
                                         date={obj.deleteDate} 
                                         permanentDelete={props.permanentDelete}
-                                        recoverObject={props.recoverObject} />)
+                                        recoverObject={props.recoverObject}
+                                        showDotBtn={false} />)
              : <p className="default-text">You currently dont't have any deleted notes</p>}
         </div>
     );

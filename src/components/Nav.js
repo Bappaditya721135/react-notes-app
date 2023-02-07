@@ -105,6 +105,8 @@ function reciveData(object) {
 
 
 
+
+
     return (
         <>
         <nav className="nav-bar">
@@ -115,8 +117,8 @@ function reciveData(object) {
             </ul>
         </nav>
         <div className="main-content">
-            {activeNav.notes && <Notes data={data} reciveData={reciveData} editObject={editObject} deleteObject={deleteObject} />}
-            {activeNav.editedNotes && <EditedNotes data={data}/>}
+            {activeNav.notes && <Notes data={data}  reciveData={reciveData} editObject={editObject} deleteObject={deleteObject} />}
+            {activeNav.editedNotes && <EditedNotes data={data}  />}
             {activeNav.deletedNotes && <DeletedNotes data={data} permanentDelete={permanentDelete} recoverObject={recoverObject} /> }
         </div>
         </>

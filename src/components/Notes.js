@@ -31,6 +31,7 @@ import BackgroundBlur from "./BackgroundBlur"
                                                                 deleteDate={obj.deleteDate}
                                                                 editObject={props.editObject}
                                                                 deleteObject={props.deleteObject}
+                                                                showDotBtn={true}
                                                                  />):
                 <p className="default-text">You don't have any notes</p>}
             </section>

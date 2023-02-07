@@ -228,7 +228,7 @@ body::-webkit-scrollbar {
 
 .note-card>.note-disc {
   font-size: 1rem;
-  height: 150px;
+  height: 145px;
   word-wrap: break-word;
   overflow-y: hidden;
   margin-bottom: 10px;
@@ -311,6 +311,7 @@ body::-webkit-scrollbar {
 
 .button-section {
   display: flex;
+  margin-top: 10px;
   justify-content: center;
   gap: 30px;
 }
@@ -486,6 +487,9 @@ body::-webkit-scrollbar {
 .edit-note {
   height: 150px;
   margin-bottom: 20px;
+}
+#edit-note::-webkit-scrollbar {
+  display: none;
 }
 
 #edit-title:focus-visible,

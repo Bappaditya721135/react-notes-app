@@ -41,6 +41,7 @@ export default function NoteCard(props) {
                     permanentDelete={props.permanentDelete}
                     setBigNote={setBigNote}
                     recoverObject={props.recoverObject}
+                    showDotBtn={props.showDotBtn}
                     />}
                     
         {bigNote && <BackgroundBlur handleClick={handleCardClick} />}

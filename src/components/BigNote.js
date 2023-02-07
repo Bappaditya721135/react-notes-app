@@ -72,13 +72,13 @@ export default function BigNote(props) {
             <div className="big-note-card">
                 <div className="date-dot-btn">
                 <div className="note-date">{props.edited ? `last edited on - ${props.editDate}` : `written on - ${props.date}`}</div>
-                <i onClick={handleClick} className="fa-solid fa-ellipsis-vertical dot-btn" style={style}>
+                {props.showDotBtn && <i onClick={handleClick} className="fa-solid fa-ellipsis-vertical dot-btn" style={style}>
                 {dotBtn && 
                     <ul className="dot-btn-option">
                         <li className="edit" onClick={handleEditClick}>edit<i className="fa-solid fa-pen-to-square"></i></li>
                         <li className="delete" onClick={handleDeleteClick}>delete<i className="fa-solid fa-trash"></i></li>
                     </ul>}
-                </i>                
+                </i>}            
             </div>
             <div className="title-section">
                 <p className="big-note-title">{props.title}</p>
