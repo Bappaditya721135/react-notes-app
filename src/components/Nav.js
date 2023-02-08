@@ -28,7 +28,8 @@ const [data, setData] = React.useState([]);
 
 // this function will edite the objects in data array 
 function editObject(object) {
-    const index = object.id -data.length;
+    console.log(object);
+    const index = data.length - object.id;
     setData(prevData => {
         prevData.splice(index,1,object)
         return [...prevData];
@@ -68,7 +69,7 @@ function deleteObject(object) {
 }
 
 
-// this function will recover the deleted object 
+// this function will recover the deleted object id
 function recoverObject(id) {
     setData(prevData => {
         const newData = prevData.map(note => {
