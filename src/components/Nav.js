@@ -41,7 +41,6 @@ const [data, setData] = React.useState(initialState);
 
 // This function is to add the data to the localStorage
 React.useEffect(()=> {
-    console.log("working");
     localStorage.setItem("data", JSON.stringify(data));
 },[data])
 
