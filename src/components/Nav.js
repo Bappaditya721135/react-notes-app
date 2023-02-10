@@ -22,13 +22,32 @@ export default function Nav() {
         })
     }
 
+
+
+
+    const initialState = () => {
+        const arr = localStorage.getItem("data");
+        if(arr.length === 0) {
+            return [];
+        }
+        else {
+            return JSON.parse(arr);
+        }
+    };
+
 // this is the state where all the object note will be stored 
-const [data, setData] = React.useState([]);
+const [data, setData] = React.useState(initialState);
+
+
+// This function is to add the data to the localStorage
+React.useEffect(()=> {
+    console.log("working");
+    localStorage.setItem("data", JSON.stringify(data));
+},[data])
 
 
 // this function will edite the objects in data array 
 function editObject(object) {
-    console.log(object);
     const index = data.length - object.id;
     setData(prevData => {
         prevData.splice(index,1,object)

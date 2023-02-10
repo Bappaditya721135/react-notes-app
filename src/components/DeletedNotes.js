@@ -12,7 +12,8 @@ export default function DeletedNotes(props) {
                                         title={obj.title} 
                                         deleted={obj.deleted} 
                                         note={obj.note} 
-                                        date={obj.deleteDate} 
+                                        date={obj.deleteDate}
+                                        deleteDate={obj.deleteDate} 
                                         permanentDelete={props.permanentDelete}
                                         recoverObject={props.recoverObject}
                                         showDotBtn={false} />)
