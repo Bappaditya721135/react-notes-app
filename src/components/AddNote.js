@@ -45,7 +45,7 @@ export default function AddNote(props) {
         let data = true;
         const valArr = Object.values(note);
         for(let i=0; i<valArr.length-4; i++) {
-            if(valArr[i] == "") {
+            if(valArr[i] === "") {
                 data = false;
             }
         }
