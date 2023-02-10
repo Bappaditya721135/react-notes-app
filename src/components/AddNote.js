@@ -49,7 +49,7 @@ export default function AddNote(props) {
                 data = false;
             }
         }
-        if(data == true) {
+        if(data === true) {
             props.reciveData(note);
             props.handleAddNoteClick();
         }
